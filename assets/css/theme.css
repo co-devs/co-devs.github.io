@@ -1,8 +1,8 @@
-/** {
+* {
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
             box-sizing: border-box;
-}*/
+}
 
 /**{
     border-collapse: collapse;
@@ -32,7 +32,7 @@ body {
     border-right: 5px solid #000000;
 }
 
-header {
+.nav-bar header {
     width: 100%;
     height: 90px;
     background-image: url("images/banner2.png");
@@ -69,31 +69,29 @@ header {
     background-color: #111;
 }
 
+.nav-bar .active {
+    background-color: #4CAF50;
+}
+
 .container {
-    display: -webkit-flex;
-    display: flex;
+    -webkit-flex: 1;
     flex: 1;
     background-color: grey;
     border-left: 5px solid #000000;
     border-right: 5px solid #000000;
 }
 
-nav {
-    width: 200px;
+.container h2 {
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-.flex-column {
-    -webkit-flex: 1;
-            flex: 1;
+.container p {
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-.flex-column main {}
-
-.flex-column h2 {}
-
-.flex-column p {}
-
-footer {
+.foot-bar footer {
     color: white;
     background-color: grey;
     border: 5px solid #000000;
