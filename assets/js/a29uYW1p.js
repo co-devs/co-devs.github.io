@@ -42,5 +42,5 @@ function activateCheats() {
   // audio.play();
 
   // alert("cheats activated");
-  window.location = "ZGVlcGVy/Y28tZGV2cw.html"
+  window.location = "ZGVlcGVy/index.html"
 }
