@@ -36,6 +36,7 @@ plugins:
 # jekyll-theme-console
 header_pages:
   - index.md
+  - links.md
   - about.md
 style: dark
 listen_for_clients_preferred_style: true
