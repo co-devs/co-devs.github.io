@@ -27,7 +27,7 @@ So again, here we're attempting to investigate a potential data theft scenario. 
 As for what to look at, I think of a potential data theft scenario consisting of two parts:
 
 1. Access to sensitive data
-2. Remove of sensitive data
+2. Removal of sensitive data
 
 Before we begin it's probably best to set expectations and remind HR of our capabilities. It's unlikely that we'll be able to uncover any "smoking gun" or definitive evidence one way or another. Sensitive data theft can be hard to prove, for example if the user took a picture of their screen with their phone then we're not going to have evidence of that.
 
