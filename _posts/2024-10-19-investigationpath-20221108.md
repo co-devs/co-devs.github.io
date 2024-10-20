@@ -11,6 +11,7 @@ categories: investigationpath
   - [Other Responses](#other-responses)
     - [Notes From Other Accounts](#notes-from-other-accounts)
     - [Notes From Chris](#notes-from-chris)
+  - [Resources](#resources)
 
 # InvestigationPath 20221108
 
@@ -43,9 +44,11 @@ I'd want to start off by collecting the following information:
 
 If my coworker doesn't know all of the above information, then I can likely pull it from Windows event logs. The scenario doesn't tell us if we have access to the system that is conducting the authentications or only the other systems. Since EDR isn't available, it's possible that this scenario is an example of a rogue endpoint of some kind (be it a legitimate host that wasn't properly enrolled in EDR or an adversary controlled system that obtained network access).
 
+Finally, I wonder what the timing and frequency of this activity is. Is it happening during normal business hours or after? Is it spread out or all at once? And does it appear to be happening on some kind of recurring basis. This information could point me towards a legitimate tool / service on the workstation.
+
 ### Windows Event Logs
 
-The scenario doesn't specify whether or not the authentications were successful. If they were not, then we'd want to look at Event ID 4625 in the Security log ([link](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventid=4624)). If successful, then we'd want to look at Event ID 4624 in the Security log ([link](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventid=4624)). In this case, we don't know, so we can filter on both event IDs. We should have some information for the source host, so we can also filter on either the hostname or IP address which should appear in the `Network Information` section of both event IDs. One of the most useful pieces of information will be the `logon type`, which is logged as an integer. If the authentications are failures, then the failure reason codes may also be useful.
+The scenario doesn't specify whether or not the authentications were successful. If they were not, then we'd want to look at Event ID 4625 in the Security log ([link](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventid=4625)). If successful, then we'd want to look at Event ID 4624 in the Security log ([link](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventid=4624)). In this case, we don't know, so we can filter on both event IDs. We should have some information for the source host, so we can also filter on either the hostname or IP address which should appear in the `Network Information` section of both event IDs. One of the most useful pieces of information will be the `logon type`, which is logged as an integer. If the authentications are failures, then the failure reason codes may also be useful.
 
 `Logon Process` and `Authentication Package` can also provide useful information about how the authentication was attempted. If available, the `Process Information` can also provide valuable information about what specific process was responsible for attempting the authentication. A useful resource about the information available in logon event logs is available [here](https://www.ultimatewindowssecurity.com/securitylog/book/page.aspx?spid=chapter5#LogonEvents).
 
@@ -80,3 +83,9 @@ The scenario doesn't specify whether or not the authentications were successful.
 Further down, Chris does provide some thoughts on where this information may have come from, stating:
 
 <blockquote class="twitter-tweet" data-conversation="none" data-dnt="true"><p lang="en" dir="ltr">Likely routes are probably:<br><br>- SIEM rules triggering from Windows Event logs<br>- Threat hunting through logs looking for one-to-many relationships or large groups of success/files in a short time<br>- Observations from Windows logs made during an IR when assessing a suspect system.</p>&mdash; Chris Sanders 🔎 🧠 (@chrissanders88) <a href="https://twitter.com/chrissanders88/status/1590344588593594370?ref_src=twsrc%5Etfw">November 9, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+## Resources
+
+- [4624: An account was successfully logged on](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventid=4624)
+- [4625: An account failed to log on](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventid=4624)
+- [Logon Events](https://www.ultimatewindowssecurity.com/securitylog/book/page.aspx?spid=chapter5#LogonEvents)

@@ -23,7 +23,7 @@ domain: co-devs.github.io
 url: https://co-devs.github.io
 baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: MikeDevens
-github_username:  jekyll
+github_username:  co-devs
 
 # Build settings
 markdown: kramdown
